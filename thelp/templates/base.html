@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сервис технической поддержки</title>
+    <link href="{% static 'css/bulma.min.css' %}" rel="stylesheet">
+</head>
+<body>
+
+{% include 'include/header.html' %}
+{% block content %}
+<h4> Base template </h4>
+{% endblock %}
+{% include 'include/footer.html' %}
+</body>
+</html>

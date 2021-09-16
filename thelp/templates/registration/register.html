@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" class="field">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" class="button is-success" value="Регистрация">
+    </form>
+</div>
+{% endblock %}

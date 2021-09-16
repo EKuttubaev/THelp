@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{ task.appeal }}
+{% block content %}
+<form action="{% url 'add_comment' task.id %}" method="post">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+        <input class="button is-info" type="submit" value="Создать">
+
+</form>
+{% endblock %}
+
+</body>
+</html>

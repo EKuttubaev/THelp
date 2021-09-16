@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  django_app:
+    image: django_app:latest
+    restart: always
+    environment:
+      - ABC=lol
+    volumes:
+      - /opt/projects/django_app/logs:/code/logs
+    ports:
+      - 8000:8000
+    networks:
+      customs_net:
+  postgres:
+    image: postgres:9.6
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - /opt/projects/django_app/pg_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=thelp_db
+      - POSTGRES_USER=thelp_user
+      - POSTGRES_PASSWORD=pass123thelp
+    networks:
+      customs_net:
+
+networks:
+  customs_net:

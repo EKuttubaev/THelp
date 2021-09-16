@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="container">
+
+    <!--    <h1><font size="6">-->
+    <!--    Перечень активных задач:</font>-->
+    <!--</h1>-->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Период обращений</th>
+            <th>Количество</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>
+
+                Количество активных задач в настоящий момент:
+            </th>
+            <td>
+                {{ count_active_tasks }}
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                Общее количество задач за сегодня:
+            </th>
+            <td>
+                {{ tasks_for_today }}
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                Задач выполнено за текущий месяц:
+            </th>
+            <td>
+                {{ tasks_for_this_months }}
+            </td>
+
+        </tr>
+        <tr>
+            <th>Задач выполненных за текущий год:
+            </th>
+            <td>{{ tasks_for_this_year }}</td>
+
+        </tr>
+        <tr>
+            <th>
+                Задач выполненных за предыдущий год:
+            </th>
+            <td>
+                {{ tasks_for_previos_year }}
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+                Общее количество выполненных задач за все время:
+            </th>
+            <td>
+                {{ count_non_active_tasks }}
+            </td>
+
+        </tr>
+        <tr>
+            <th>
+
+            </th>
+            <td>
+                {{ users_report }}
+            </td>
+
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+
+        </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{% url 'export-excel' %}" class="button">Экспорт в xls</a>
+    <a href="{% url 'get-client-ip' %}" class="button">IP</a>
+    <form method="post" class="field">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+
+        <div>
+
+        </div>
+
+    </form>
+    <div>
+        {{ ip }}
+    </div>
+</div>
+
+{% endblock %}

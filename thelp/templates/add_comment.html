@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>{% block content%}
+    <form method="post">
+
+
+        {% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" class="submit-button">
+
+    </form>
+    {% endblock %}
+</div>
+</body>
+</html>

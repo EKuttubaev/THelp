@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="container">
+<form method="post" class="field">
+
+    {% csrf_token %}
+    <!--    {{ form.as_ul }}-->
+    <div class="field">
+        <label class="label">Заполните Ваше обращение:</label>
+        <div class="control">
+            {{ form.appeal }}
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">Номер кабинета:</label>
+        <div class="control">
+            {{ form.room }}
+        </div>
+        <div class="field">
+            <label class="label">ФИО сотрудника: </label>
+            <div class="control">
+                {{ form.person }}
+            </div>
+        </div>
+            <div class="control">
+                <button class="button is-link">Отравить</button>
+            </div>
+        </div>
+
+
+</form>
+</div>
+
+{% endblock %}

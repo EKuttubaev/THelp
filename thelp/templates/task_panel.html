@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content%}
+<body>
+
+<div class="container">
+    <h1><font size="6">
+        Перечень активных задач:</font>
+    </h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Обращение</th>
+            <th>Номер кабинета</th>
+            <th>Сотрудник</th>
+            <th>Дата и время</th>
+            {% if user.is_authenticated %}
+
+            <th> IP адрес</th>
+                        <th>Исполнить</th>
+                        {% endif %}
+
+
+        </tr>
+        </thead>
+        {% for task in tasks %}
+
+        <tbody>
+        <tr>
+            <th> {{ task.appeal }}
+            </th>
+            <th> {{ task.room }}
+            </th>
+            <th> {{ task.person }}
+            </th>
+            <th>
+                {{ task.time_and_date }}
+            </th>
+            {% if user.is_authenticated %}
+            <th>
+                {{ task.ip }}
+            </th>
+            <th><a href="{% url 'task' task.id %}">Исполнить</a></th>
+            {% endif %}
+
+        </tr>
+        </tbody>
+        {% endfor %}
+
+    </table>
+
+
+</div>
+
+</body>
+{% endblock %}

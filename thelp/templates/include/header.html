@@ -1,0 +1,67 @@
+{% load static %}
+<div>
+    <div class="" align="center">
+        <figure class="image is-128x128">
+            <img src="{% static 'img/logo.png' %}">
+
+        </figure>
+    </div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="notification is-primary" align="has-text-centered">
+                <h1 class="header is-size-4">Сервис технической поддержки сотрудников Центрального
+                    аппарата Государственной таможенной службы</h1>
+                <!--                <h1 class="header is-size-4" align="has-text-centered">Здесь Вы можете оставить заявку на техническое сопровождение-->
+                </h1>
+            </div>
+
+        </div>
+
+    </nav>
+</div>
+<div class="tabs is-large">
+    <ul>
+        <li><a class="navbar-item" href="{% url 'homepage' %}">
+            Главная
+        </a></li>
+        <li><a class="navbar-item" href="{% url 'tasks' %}">
+            Задачи
+        </a></li>
+        <li><a class="navbar-item" href="{% url 'report' %}">
+            Мониторинг
+        </a></li>
+        <li><a class="navbar-item" href="{% url 'report_user' %}">
+            Мониторинг по исполнителям
+        </a></li>
+    </ul>
+    {% if user.is_authenticated %}
+    <div class="navbar-end">
+        <div class="navbar-item">
+            <div class="buttons">
+                <a class="button is-primary">
+                    <strong>{{ user.username }}</strong>
+                </a>
+                 <a class="button is-light" href="{% url 'register' %}">
+                    Регистрация
+                </a>
+                <a class="button is-light" href="{% url 'logout' %}">
+                    Выход
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+ {% else %}
+    <div class="navbar-end">
+        <div class="navbar-item">
+            <div class="buttons">
+                <a class="button is-primary" href="{% url 'login' %}">
+                    <strong>Вход</strong>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+</div>

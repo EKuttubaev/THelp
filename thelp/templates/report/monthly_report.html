@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="tabs">
+    <ul>
+        <li class="is-active"><a href="{% url 'report_user' %}">Ежедневный</a></li>
+        <li><a href="{% url 'monthly_report' %}">Ежемесячный</a></li>
+        <li><a href="{% url 'annual_report' %}">Ежегодный</a></li>
+        <li><a href="{% url 'common_report' %}">Общий</a></li>
+    </ul>
+</div>
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Исполнитель</th>
+            <th> Количество выполненных задач за месяц</th>
+        </tr>
+        </thead>
+        {% for user in u_for_months %}
+        <tbody>
+        <tr>
+            <th>
+                <b>{{ user.name__username }}</b>:
+            </th>
+
+            <td>
+                <b>{{ user.num }}</b></td>
+
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
